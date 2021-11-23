@@ -1,11 +1,13 @@
-import { BRAND_LOGO_IMG } from "../../constants/imgsPaths";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from "react-router-dom";
+import { IMGS_PATHS } from "../../constants/imgsPaths";
 
 function navigationLogo() {
   return (
-    <div class="logo">
-      <a href="#">
-        <img src={BRAND_LOGO_IMG} alt="R mini logo" />
-      </a>
+    <div className="logo">
+      <Link to="/">
+        <img src={IMGS_PATHS.BRAND_LOGO_IMG} alt="R mini logo" />
+      </Link>
     </div>
   );
 }

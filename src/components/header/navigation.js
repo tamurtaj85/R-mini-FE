@@ -1,21 +1,27 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from "react-router-dom";
+
 function navigation() {
   return (
     <nav>
       <ul>
         <li>
-          <a href="#">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">About</a>
+          <Link to="/about">About</Link>
         </li>
         <li>
-          <a href="#">Product</a>
+          <Link to="/products">Product</Link>
         </li>
         <li>
-          <a href="#">Cart</a>
+          <Link to="/cart">Cart</Link>
         </li>
         <li>
-          <a href="#">Account</a>
+          <Link to="/account">Account</Link>
+        </li>
+        <li>
+          <Link to="/auth">Sign In</Link>
         </li>
       </ul>
     </nav>

@@ -1,0 +1,379 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 20px;
+  font-family: "Nunito", sans-serif;
+  font-weight: bolder;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
+
+.hidden {
+  display: none;
+}
+/*  */
+/* Navigation styling */
+/*  */
+.navBar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo img {
+  width: 100px;
+  border-radius: 50px;
+  transition: box-shadow 0.5s;
+}
+
+.logo img:hover {
+  box-shadow: 10px 10px 50px 1px #ff641725;
+}
+
+.navBar nav {
+  flex: 1;
+  text-align: right;
+}
+
+.navBar nav li {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.navBar nav a {
+  text-decoration: none;
+  color: #ff6517;
+  border-bottom: 1px solid transparent;
+  transition: border 0.5s;
+}
+
+nav ul li a:hover {
+  border-bottom: 2px solid #fa440f;
+}
+
+/*  */
+/* Home Page Styling */
+/*  */
+.homePage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.colSpan1Of2 {
+  /* background-color: lightblue;
+  border: 2px dashed black; */
+  flex-basis: 50%;
+}
+
+.colSpan1Of2 h1 {
+  font-size: 400%;
+  font-weight: bolder;
+  color: #fa440f;
+  text-transform: uppercase;
+}
+
+.colSpan1Of2 p {
+  font-size: 200%;
+  font-weight: 600;
+  color: #ff6517;
+  padding-bottom: 10px;
+}
+
+.colSpan1Of2 button {
+  background: #fa440f;
+  border: transparent;
+  border-radius: 50px;
+  padding: 10px 20px;
+
+  font-size: 100%;
+  color: white;
+  transition: background 0.5s;
+}
+
+.colSpan1Of2 button:hover {
+  background: #ff6517;
+}
+
+.homePage img {
+  display: block;
+  margin: 0 auto;
+
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+}
+
+/*  */
+/* Products Page */
+/*  */
+.productPage {
+  display: flex;
+  /* background-color: lightblue;
+  border: 2px dashed black; */
+}
+
+.categories,
+.products {
+  padding: 10px 20px;
+}
+
+.categories {
+  flex: 25%;
+  background: #ff6517;
+  color: white;
+}
+
+.categories h1,
+.products h1 {
+  padding-bottom: 50px;
+}
+
+.products {
+  flex: 75%;
+  color: #fa440f;
+  border: lightgray 2px solid;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.product {
+  display: inline-block;
+  background: rgba(245, 222, 179, 0.5);
+
+  max-width: 200px;
+  width: 100%;
+
+  margin: 5px 5px;
+
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.heroImg {
+  background: white;
+}
+
+.heroImg img {
+  display: block;
+
+  max-width: 200px;
+  max-height: 150px;
+
+  width: auto;
+  height: auto;
+
+  margin: 0 auto;
+}
+
+.productInfo {
+  padding: 10px 20px;
+}
+
+.product h3 a {
+  text-decoration: none;
+  color: #fa440f;
+}
+
+.product h5 {
+  color: black;
+  font-weight: 100;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin: 20px auto;
+}
+
+/*  */
+/* Cart page styling */
+/*  */
+/* .cartPage {
+  display: flex;
+} */
+
+.cartHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: gray;
+
+  margin-bottom: 30px;
+}
+
+.cartInfo {
+  padding: 20px 5px;
+}
+
+.cartID {
+  font-weight: normal;
+}
+
+.cartDT {
+  font-weight: lighter;
+}
+
+.user {
+  font-size: 250%;
+
+  border: #fa440f 2px solid;
+  border-radius: 50px;
+
+  color: #ff6517;
+}
+
+.userName {
+  font-weight: lighter;
+}
+
+/* Order items styling */
+
+.orderItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: wheat;
+
+  border: darkgray 2px solid;
+  border-radius: 10px;
+
+  padding: 10px 20px;
+
+  color: gray;
+}
+
+.productDetails {
+  flex: 75%;
+}
+
+.productQuantity {
+  flex: 10%;
+  text-align: center;
+}
+
+.removeProduct {
+  flex: 1%;
+  margin: auto 0;
+}
+
+.removeProduct button {
+  background: none;
+  border: none;
+
+  cursor: pointer;
+}
+
+.removeProduct .btn {
+  color: gray;
+}
+
+/*  */
+/* Accounts page */
+/*  */
+.accountPage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*  */
+/* Auth Page */
+/*  */
+
+.auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section {
+  /* border: 1px dashed black; */
+  width: 500px;
+  margin: 0 auto;
+}
+
+.formContainer {
+  /* border: 2px solid black; */
+  padding: 30px 0;
+  border-radius: 15px;
+
+  transition: 0.5s;
+}
+
+.authMessage {
+  text-align: center;
+
+  font-size: small;
+  color: gray;
+}
+
+.authMessage button {
+  border: none;
+  background: none;
+  color: #fa440f;
+  cursor: pointer;
+
+  transition: 0.5s ease-out;
+}
+
+.authForm {
+  display: flex;
+  /* background: lightgreen;
+  border: 10px solid blue; */
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+  height: 250px;
+
+  padding: 10px 20px;
+  margin: 20px 0;
+}
+
+.formContainer:hover {
+  box-shadow: 10px 10px 20px rgba(128, 128, 128, 0.5);
+}
+
+.inpGroup,
+.authForm button {
+  border: none;
+  background: none;
+  font-size: large;
+  margin: 15px 0;
+}
+
+.inpGroup {
+  border-bottom: 2px solid gray;
+  width: 75%;
+}
+
+.inpGroup:focus {
+  outline: none;
+}
+
+.authForm button {
+  /* align-self: center; */
+  background: #fa440f;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.authForm button:hover {
+  background: #ff6517;
+}
