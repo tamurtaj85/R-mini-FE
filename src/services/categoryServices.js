@@ -2,10 +2,8 @@ import { axiosInstance } from "./configs";
 
 export async function getCategoriesList() {
   try {
-    const response = await axiosInstance.get("/categories");
-    // console.log(response.data);
-    return response.data;
+    return await axiosInstance.get("/categories");
   } catch (error) {
-    console.error(error);
+    console.error(error.message, "", error.response.data);
   }
 }

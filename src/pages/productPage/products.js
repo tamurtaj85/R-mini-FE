@@ -20,15 +20,15 @@ export default function Products() {
   const [productsList, setProductsList] = useState([]);
 
   async function loadCategories() {
-    const data = await Services.getCategoriesList();
-    // console.log(data);
-    setCategoriesList(data);
+    const response = await Services.getCategoriesList();
+    // console.log("CategoriesResponse:", response);
+    setCategoriesList(await response.data);
   }
 
   async function loadProducts() {
-    const data = await Services.ProductServices.getProducts();
-    // console.log(data);
-    setProductsList(data);
+    const response = await Services.ProductServices.getProducts();
+    // console.log("ProductsResponse: ", response);
+    setProductsList(await response.data);
   }
 
   useEffect(() => {
