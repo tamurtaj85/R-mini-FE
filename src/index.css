@@ -377,3 +377,16 @@ section {
 .authForm button:hover {
   background: #ff6517;
 }
+
+/*  */
+/* Order Page Styling */
+/*  */
+.order-parent {
+  /* background-color: aquamarine;
+  border: 1px solid black; */
+}
+
+.order-parent h1 {
+  color: #fa440f;
+  margin-bottom: 30px;
+}

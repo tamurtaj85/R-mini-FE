@@ -10,14 +10,14 @@ import Divider from "@mui/material/Divider";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const style = {
   width: "100%",
   maxWidth: 360,
 };
 
-export default function Products() {
+export default function ProductsByCategory() {
   const [categoriesList, setCategoriesList] = useState([]);
   const [productsList, setProductsList] = useState([]);
 
@@ -27,16 +27,21 @@ export default function Products() {
     setCategoriesList(await response.data);
   }
 
-  async function loadProducts() {
-    const response = await Services.ProductServices.getProducts();
-    // console.log("ProductsResponse: ", response);
+  const { cID } = useParams();
+
+  async function loadProductsByCategory() {
+    const response = await Services.ProductServices.getProductByCategory(cID);
+    // console.log(response);
+    if ((await response.data.length) === 0)
+      console.log("No products in this category yet");
+
     setProductsList(await response.data);
   }
 
   useEffect(() => {
     loadCategories();
-    loadProducts();
-  }, []);
+    loadProductsByCategory();
+  }, [cID]);
 
   return (
     <>
@@ -65,30 +70,34 @@ export default function Products() {
 
         <div className="products">
           <h1>Products</h1>
-          {productsList.map((product) => {
-            return (
-              <article className="product" key={product._id}>
-                <div className="heroImg">
-                  <img
-                    src={
-                      product.productImg
-                        ? product.productImg
-                        : IMGS_PATHS.SAMPLE_PRODUCT_IMG
-                    }
-                    alt="product img"
-                  ></img>
-                </div>
-                <div className="productInfo">
-                  <h3>
-                    <a href="#">{product.productName.toUpperCase()}</a>
-                  </h3>
-                  <h5>{product.productBrand}</h5>
-                  <h5>{product.productPrice} Pkr</h5>
-                  <h5>{product.productStatus.toUpperCase()}</h5>
-                </div>
-              </article>
-            );
-          })}
+          {productsList.length === 0 ? (
+            <h1>No products in this category yet! </h1>
+          ) : (
+            productsList.map((product) => {
+              return (
+                <article className="product" key={product._id}>
+                  <div className="heroImg">
+                    <img
+                      src={
+                        product.productImg
+                          ? product.productImg
+                          : IMGS_PATHS.SAMPLE_PRODUCT_IMG
+                      }
+                      alt="product img"
+                    ></img>
+                  </div>
+                  <div className="productInfo">
+                    <h3>
+                      <a href="#">{product.productName.toUpperCase()}</a>
+                    </h3>
+                    <h5>{product.productBrand}</h5>
+                    <h5>{product.productPrice} Pkr</h5>
+                    <h5>{product.productStatus.toUpperCase()}</h5>
+                  </div>
+                </article>
+              );
+            })
+          )}
         </div>
       </div>
 

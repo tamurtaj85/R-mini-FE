@@ -15,6 +15,9 @@ function navigation() {
           <Link to="/products">Product</Link>
         </li>
         <li>
+          <Link to="/order">Order</Link>
+        </li>
+        <li>
           <Link to="/cart">Cart</Link>
         </li>
         <li>
