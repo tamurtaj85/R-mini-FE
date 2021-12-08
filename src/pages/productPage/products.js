@@ -21,22 +21,22 @@ export default function Products() {
   const [categoriesList, setCategoriesList] = useState([]);
   const [productsList, setProductsList] = useState([]);
 
+  useEffect(() => {
+    loadCategories();
+    loadProducts();
+  }, []);
+
   async function loadCategories() {
     const response = await Services.getCategoriesList();
     // console.log("CategoriesResponse:", response);
-    setCategoriesList(await response.data);
+    setCategoriesList(response.data);
   }
 
   async function loadProducts() {
     const response = await Services.ProductServices.getProducts();
     // console.log("ProductsResponse: ", response);
-    setProductsList(await response.data);
+    setProductsList(response.data);
   }
-
-  useEffect(() => {
-    loadCategories();
-    loadProducts();
-  }, []);
 
   return (
     <>

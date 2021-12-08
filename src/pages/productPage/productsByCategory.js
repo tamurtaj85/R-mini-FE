@@ -21,27 +21,24 @@ export default function ProductsByCategory() {
   const [categoriesList, setCategoriesList] = useState([]);
   const [productsList, setProductsList] = useState([]);
 
-  async function loadCategories() {
-    const response = await Services.getCategoriesList();
-    // console.log("CategoriesResponse:", response);
-    setCategoriesList(await response.data);
-  }
-
   const { cID } = useParams();
-
-  async function loadProductsByCategory() {
-    const response = await Services.ProductServices.getProductByCategory(cID);
-    // console.log(response);
-    if ((await response.data.length) === 0)
-      console.log("No products in this category yet");
-
-    setProductsList(await response.data);
-  }
 
   useEffect(() => {
     loadCategories();
     loadProductsByCategory();
   }, [cID]);
+
+  async function loadCategories() {
+    const response = await Services.getCategoriesList();
+    // console.log("CategoriesResponse:", response);
+    setCategoriesList(response.data);
+  }
+
+  async function loadProductsByCategory() {
+    const response = await Services.ProductServices.getProductByCategory(cID);
+    // console.log("LoadByCategoryResponse:", response);
+    setProductsList(response.data);
+  }
 
   return (
     <>

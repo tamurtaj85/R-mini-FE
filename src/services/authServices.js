@@ -6,6 +6,6 @@ export default async function doAuth(url, data) {
     // console.log(response.data);
     return response;
   } catch (error) {
-    console.error(error.message, "", error.response.data);
+    console.log("Axios:", error.toJSON());
   }
 }
