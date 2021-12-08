@@ -49,6 +49,15 @@ export default function ProductsByCategory() {
         <div className="categories">
           <h1>Categories</h1>
           <List sx={style} component="nav" aria-label="categoriesL1">
+            <Link
+              to={`/products`}
+              style={{ textDecoration: "none", color: "white" }}
+            >
+              <ListItem key={0} data-id={0} button>
+                <ListItemText primary={"ALL"} key={0} />
+              </ListItem>
+              <Divider />
+            </Link>
             {categoriesList.map((category) => {
               return (
                 <Link
