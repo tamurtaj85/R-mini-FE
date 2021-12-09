@@ -92,7 +92,7 @@ export const Order = () => {
           helperText="Please order type"
           variant="filled"
         >
-          <MenuItem value="Organic" active="true">
+          <MenuItem value="Organic" active>
             Organic
           </MenuItem>
           <MenuItem value="Inorganic">Inorganic</MenuItem>
