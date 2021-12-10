@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
 
@@ -33,7 +33,17 @@ function stringAvatar(name) {
 
 const username = "R mini user";
 
-export default function cart() {
+export default function Cart() {
+  const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem("cart")));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   return (
     <div className="cartPage">
       <header className="cartHeader">
@@ -48,17 +58,42 @@ export default function cart() {
           <h4 className="userName">{username}</h4>
         </div>
       </header>
-      <div className="orderItem" key="0">
-        <div className="productDetails">
-          Product Details{/* Product Details use product component here */}
+
+      {cart.length === 0 ? (
+        <div style={{ color: "gray" }}>
+          <h3>You have no items in your cart!</h3>
+          <h4>Please select products from Products page.</h4>
         </div>
-        <div className="productQuantity">2</div>
-        <div className="removeProduct">
-          <button>
-            <span className="material-icons btn">highlight_off</span>
-          </button>
+      ) : (
+        <div>
+          <h1 style={{ color: "gray" }}>Cart Items</h1>
+          {cart.map((item, index) => {
+            return (
+              <div className="orderItem" key={item._id}>
+                <div className="productDetails">
+                  <h5>{item.productName}</h5>
+                  <h5>{item.productBrand}</h5>
+                  <h6>{item.productStatus}</h6>
+                </div>
+                <div className="productQuantity">1</div>
+                <div className="removeProduct">
+                  <button
+                    onClick={() => {
+                      cart.splice(index, 1);
+                      setCart([...cart]);
+                    }}
+                  >
+                    <span className="material-icons btn">highlight_off</span>
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
-      </div>
+        // <></>
+      )}
+
+      {/* {console.log(localStorage.getItem("cart"), cart)} */}
     </div>
   );
 }

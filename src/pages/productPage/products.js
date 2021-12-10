@@ -9,6 +9,8 @@ import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import IconButton from "@mui/material/IconButton";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 import { Link } from "react-router-dom";
 
@@ -20,6 +22,7 @@ const style = {
 export default function Products() {
   const [categoriesList, setCategoriesList] = useState([]);
   const [productsList, setProductsList] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     loadCategories();
@@ -37,6 +40,10 @@ export default function Products() {
     // console.log("ProductsResponse: ", response);
     setProductsList(response.data);
   }
+
+  useEffect(() => {
+    localStorage.setItem(`cart`, JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <>
@@ -91,6 +98,19 @@ export default function Products() {
                   <h3>
                     <a href="#">{product.productName.toUpperCase()}</a>
                   </h3>
+                  <div className="product-card-header">
+                    <IconButton
+                      size="small"
+                      style={{ color: "white", background: "#fa440f" }}
+                      aria-label="add to shopping cart"
+                      onClick={() => {
+                        setCart([...cart, product]);
+                      }}
+                    >
+                      <AddShoppingCartIcon />
+                    </IconButton>
+                  </div>
+
                   <h5>{product.productBrand}</h5>
                   <h5>{product.productPrice} Pkr</h5>
                   <h5>{product.productStatus.toUpperCase()}</h5>

@@ -37,7 +37,7 @@ export default function ProductsByCategory() {
   async function loadProductsByCategory() {
     const response = await Services.ProductServices.getProductByCategory(cID);
     // console.log("LoadByCategoryResponse:", response);
-    setProductsList(response.data);
+    setProductsList(response.data.products);
   }
 
   return (

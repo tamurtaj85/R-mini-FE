@@ -198,6 +198,11 @@ nav ul li a:hover {
   margin: 20px auto;
 }
 
+.product-card-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
 /*  */
 /* Cart page styling */
 /*  */
@@ -248,16 +253,21 @@ nav ul li a:hover {
 
   background: wheat;
 
-  border: darkgray 2px solid;
+  border: rgba(169, 169, 169, 0.5) 2px solid;
   border-radius: 10px;
 
   padding: 10px 20px;
+
+  margin-bottom: 10px;
 
   color: gray;
 }
 
 .productDetails {
   flex: 75%;
+
+  display: flex;
+  justify-content: space-between;
 }
 
 .productQuantity {
