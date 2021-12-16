@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AuthContext } from "..";
 import Avatar from "@mui/material/Avatar";
 import Stack from "@mui/material/Stack";
+import { Services } from "../../services";
 
 function stringToColor(string) {
   let hash = 0;
@@ -35,13 +37,24 @@ const username = "R mini user";
 
 export default function Cart() {
   const [cart, setCart] = useState([]);
+  const [userData, setUserData] = useState(null);
+  const user = useContext(AuthContext);
+
+  async function getUserInfo() {
+    if (!user?.USER_ID) return;
+
+    const response = await Services.Users.getUserByID(user?.USER_ID);
+    // console.log(response);
+    setUserData(response.data);
+  }
 
   useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart")));
+    getUserInfo();
+    setCart(JSON.parse(localStorage.getItem(`cart:${user?.USER_ID ?? ""}`)));
   }, []);
 
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
+    localStorage.setItem(`cart:${user?.USER_ID ?? ""}`, JSON.stringify(cart));
   }, [cart]);
 
   return (
@@ -53,9 +66,9 @@ export default function Cart() {
         </div>
         <div className="userInfo">
           <Stack direction="row" spacing={5}>
-            <Avatar {...stringAvatar(`${username}`)} />
+            <Avatar {...stringAvatar(`${userData?.fullName ?? username}`)} />
           </Stack>
-          <h4 className="userName">{username}</h4>
+          <h4 className="userName">{userData?.fullName ?? username}</h4>
         </div>
       </header>
 

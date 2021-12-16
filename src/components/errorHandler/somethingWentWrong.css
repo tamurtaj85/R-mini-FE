@@ -1,0 +1,35 @@
+.somethingWentWrong {
+  /* height: 100vh;
+  width: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: green; */
+}
+
+.hero-Img {
+  margin: 0 auto;
+}
+
+.hero-Img img {
+  /* width: 10px; */
+  height: 650px;
+  /* flex: 50%; */
+  /* border: 2px black dashed; */
+}
+
+.error-container {
+  flex: 50%;
+  /* border: 2px black dashed; */
+  text-align: center;
+  color: #fa440f;
+}
+
+.error-container h1 {
+  font-weight: bolder;
+  font-size: 50px;
+}
+
+.error-container h3 {
+  font-weight: lighter;
+}

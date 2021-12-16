@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { AuthContext } from "..";
 import { Services } from "../../services/index";
 import { IMGS_PATHS } from "../../constants/imgsPaths";
 
@@ -38,11 +39,24 @@ export default function Products() {
   async function loadProducts() {
     const response = await Services.ProductServices.getProducts();
     // console.log("ProductsResponse: ", response);
+
+    if (response?.code && response?.message)
+      console.log(response.code, response.message);
+    // else if (response?.status !== 200) console.log(response.data);
     setProductsList(response.data);
   }
 
+  const user = useContext(AuthContext);
+
   useEffect(() => {
-    localStorage.setItem(`cart`, JSON.stringify(cart));
+    const ls = JSON.parse(localStorage.getItem(`cart:${user?.USER_ID ?? ""}`));
+    if (ls) setCart(ls);
+    console.log("SetCart");
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem(`cart:${user?.USER_ID ?? ""}`, JSON.stringify(cart));
+    console.log("SetLS");
   }, [cart]);
 
   return (

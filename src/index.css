@@ -321,7 +321,8 @@ section {
   padding: 30px 0;
   border-radius: 15px;
 
-  transition: 0.5s;
+  /* transition: 0.5s; */
+  box-shadow: 10px 10px 20px rgba(128, 128, 128, 0.5);
 }
 
 .authMessage {
@@ -353,9 +354,9 @@ section {
   margin: 20px 0;
 }
 
-.formContainer:hover {
+/* .formContainer:hover {
   box-shadow: 10px 10px 20px rgba(128, 128, 128, 0.5);
-}
+} */
 
 .inpGroup,
 .authForm button {
@@ -399,4 +400,17 @@ section {
 .order-parent h1 {
   color: #fa440f;
   margin-bottom: 30px;
+}
+
+/*  */
+/* About Page */
+/*  */
+.about-page h1 {
+  color: #fa440f;
+  margin-bottom: 10px;
+}
+
+.about-page p {
+  font-weight: lighter;
+  padding: 10px 0;
 }

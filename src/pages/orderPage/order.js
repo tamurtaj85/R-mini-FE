@@ -9,8 +9,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 
 import { Services } from "../../services";
+import { GenericSnackbars } from "../../components/snackBar/snackBar";
 
 import { useNavigate } from "react-router";
+
+import { SB_DEF_STATE } from "../../constants/constants";
 
 export const Order = () => {
   const [deliveryDate, setDeliveryDate] = useState(null);
@@ -21,6 +24,8 @@ export const Order = () => {
   });
 
   const [products, setProducts] = useState([]);
+  const [snackBar, setSnackBar] = useState(SB_DEF_STATE);
+  const [sww, setSWW] = useState(null);
 
   const navigateTo = useNavigate();
 
@@ -36,11 +41,31 @@ export const Order = () => {
       ...order,
     });
 
+    if (response?.code && response?.message) {
+      // Timeout Error or anything else
+      // console.log(response.code, response.message);
+      setSWW(response);
+      return;
+    } else if (response?.status > 400) {
+      // console.log(response.data);
+      setSnackBar({
+        state: true,
+        alertMessage: response.data,
+        severity: "warning",
+      });
+
+      return;
+    }
+
     if (response.status === 201) {
+      setSnackBar({
+        state: true,
+        alertMessage: "order placed successfully",
+        severity: "success",
+      });
       navigateTo("/cart");
       //   console.log("Order Placed Successfully");
     }
-
     // console.log(response);
   }
 
@@ -133,6 +158,7 @@ export const Order = () => {
           Order Now
         </Button>
       </Box>
+      <GenericSnackbars snackBar={snackBar} />
     </div>
   );
 };
