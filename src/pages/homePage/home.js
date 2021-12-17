@@ -4,7 +4,7 @@ import { IMGS_PATHS } from "../../constants/imgsPaths";
 export default function home() {
   return (
     <div className="homePage">
-      <div className="colSpan1Of2">
+      <div className="colSpan1Of2 container">
         <h1>
           Retail made <br />
           easier
